@@ -8,7 +8,7 @@ PFont humidity;
 PFont stretch;
 PFont temp;
 PFont light;
-FileWriter writer;
+//FileWriter writer;
 
 PImage logo;
 
@@ -56,11 +56,10 @@ void setup() {
   size(width, height);
   textFont(theFont);
   logo = loadImage("ConfluenceLogo.png");
-  try {
-    //Change this
+  /*try {
     writer = new FileWriter("log.txt", true);
   } catch(IOException ioe) {
-  }
+  }*/
 
     //change this
    //System.setProperty("http.proxyHost","proxy.swgfl.org.uk");
@@ -75,7 +74,7 @@ void setup() {
   // I know that the first port in the serial list on my mac
   // is always my  Keyspan adaptor, so I open Serial.list()[0].
   // Open whatever port is the one you're using.
-  port = new Serial(this, Serial.list()[0], 9600);
+  port = new Serial(this, Serial.list()[5], 9600);
   port.clear();
   // Throw out the first reading, in case we started reading 
   // in the middle of a string from the sender.

@@ -233,12 +233,12 @@ public void parseZNetFrame() {
     LastReport = Calendar.getInstance().getTime().toString();
     
     //Write report to file
-     try {
+     /*try {
       //String time = Calendar.getInstance().getTime().toString();
       writer.write(LastReport + "\t" + XBeeID + "\t" + dataADC[0] + "\t" + dataADC[1] + "\t" + dataADC[2] + "\t" + dataADC[3] + "\n");
       writer.flush();
     } catch(IOException ioe) {
-    }
+    }*/
 
    // for (int i=0; i<2; i++) {
       /*print("ecoid" + i);
