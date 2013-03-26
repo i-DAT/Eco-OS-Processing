@@ -55,7 +55,7 @@ void setup() {
   //size(320, 440);
   size(width, height);
   textFont(theFont);
-  logo = loadImage("ConfluenceLogo.png");
+  //logo = loadImage("ConfluenceLogo.png");
   /*try {
     writer = new FileWriter("log.txt", true);
   } catch(IOException ioe) {
@@ -131,7 +131,7 @@ void draw() {
   //textFont(stretch);
   text("stretch", bar4_X, text_Y);
   
- image(logo, bar1_X + 850, text_Y);
+ //image(logo, bar1_X + 850, text_Y);
  //image(logo, 0, 0);
 
 
