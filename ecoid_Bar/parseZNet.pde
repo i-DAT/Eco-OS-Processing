@@ -1,6 +1,11 @@
 //functions for processing and transmitted imformation from Packets coming from the Xbee Neyworks
 import java.util.*;
 
+import cosm.*;
+
+DataOut feed;
+
+
 // if you get a ZNet XBeeDataFrame, pull the parts out:
 
 public int apiId = -1;
@@ -225,8 +230,14 @@ public void parseZNetFrame() {
     for (int j=0; j<4; j++) {
 
       //sendString = "http://www.eco-os.org/ecoidCollect.php?name=" + addr + sensorArray[j] + "&value=" + dataADC[j];
-      sendString = "http://www.eco-os.org/ecoidCollect.php?name=" + XBeeID + sensorArray[j] + "&value=" + dataADC[j];
-      println(sendString);
+      //sendString = "http://www.eco-os.org/ecoidCollect.php?name=" + XBeeID + sensorArray[j] + "&value=" + dataADC[j];
+      //println(sendString);
+      feed = new DataOut(this, COSM_API_KEY, feedID);
+      
+      float dataVal= dataADC[j];
+      
+      feed.setStream(sensorArray[j], dataVal);
+      
       //UNCOMMENT BEFORE DEPLOY - This Prevents Uploads during Testing.
       //String[] s = loadStrings(sendString);
     }
