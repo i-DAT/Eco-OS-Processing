@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import processing.serial.*;
 
+import org.json.JSONObject;
+import org.json.JSONArray;
+
 //proxy
 import java.net.*;
 
@@ -48,6 +51,10 @@ int[] ECOIDS;
 int[] ECOPACKET;
 
 
+String json_request = "data/ecoid_list.json";
+String json_result;
+
+
 ArrayList Reports;
 
 
@@ -66,8 +73,19 @@ void setup() {
    //System.setProperty("http.proxyHost","proxy.swgfl.org.uk");
    //System.setProperty("http.proxyPort","8080");
 
-
-
+  //get json data
+  json_result = join( loadStrings( json_request ), "");  
+  
+  //print(result);
+  JSONObject Data1 = new JSONObject(json_result);
+  JSONArray results = Data1.getJSONArray("Ecoids");
+  print(results);
+  try{
+    JSONObject anEcoid = results.getJSONObject(0);
+    print(anEcoid.getString("Name"));
+  } catch (JSONException e) {
+    println ("There was an error parsing the JSONObject.");
+  } 
 
 
   // List all the available serial ports
@@ -75,7 +93,7 @@ void setup() {
   // I know that the first port in the serial list on my mac
   // is always my  Keyspan adaptor, so I open Serial.list()[0].
   // Open whatever port is the one you're using.
-  port = new Serial(this, Serial.list()[5], 9600);
+  port = new Serial(this, Serial.list()[0], 9600);
   port.clear();
   // Throw out the first reading, in case we started reading 
   // in the middle of a string from the sender.
