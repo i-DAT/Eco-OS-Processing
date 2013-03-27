@@ -59,13 +59,13 @@
 			"Name":"Ecoid I",
 			"XBee_ID":"13A200407C4117",
 			"Feed_ID":"121295",
-			"Type":"40min"
+			"Type":"RT"
 		},
 		{
 			"Name":"Ecoid J",
-			"XBee_ID":"13A200407C41A9",
+			"XBee_ID":"13A200407C419F",
 			"Feed_ID":"121296",
-			"Type":"40min"
+			"Type":"4min"
 		},
 		{
 			"Name":"Ecoid K",
