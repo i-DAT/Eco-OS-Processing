@@ -28,6 +28,9 @@ String sendString;
 
 String LastReport;
 
+String thisName;
+String thisFeedID;
+
 
 
 
@@ -162,7 +165,41 @@ public void parseZNetFrame() {
     drawBarChart(dataADC[0], dataADC[1], dataADC[2], dataADC[3]);
     
     //fill(255, 237, 0);
-   
+     //get XBee unique ID
+    XBeeID = "";
+    for (int i = 2; i<= 8; i++) { 
+      XBeeID = XBeeID + hex(dataArray[i],2);
+      
+    }
+    LastReport = Calendar.getInstance().getTime().toString();
+    println("XBeeID = " + XBeeID);
+
+    println("addr = " + addr);
+    
+    //Find the Ecoid
+    
+    try{
+      //JSONObject anEcoid = ecoid_list.getJSONObject(0);
+      //print(anEcoid.getString("Name"));
+      thisName = "";
+      thisFeedID = "";
+      
+    for(int i = 0; i < ecoid_list.length(); i++){
+        JSONObject anEcoid = ecoid_list.getJSONObject(i);
+        if (XBeeID.equals(anEcoid.getString("XBee_ID"))){
+          println("Match! " + anEcoid.getString("Name"));
+          thisName = anEcoid.getString("Name");
+          thisFeedID = anEcoid.getString("Feed_ID");
+        }
+        else{
+          println(anEcoid.getString("Name"));
+        }
+    }
+  
+    } catch (JSONException e) {
+      println (e);
+    } 
+    
 
    
 
@@ -185,7 +222,7 @@ public void parseZNetFrame() {
     //textFont(stretchData);
     text(dataADC[3], bar4_X, value_Y);
     
-    text("#" + XBeeID, bar1_X, text_Y - 20);
+    text(thisName, bar1_X, text_Y - 20);
     
     //text("Last Report from " + XBeeID + ":" +  LastReport, bar1_X, value_Y + 20);
     
@@ -193,7 +230,7 @@ public void parseZNetFrame() {
     
     fill(250);
     
-    Reports.add(new EcoidReport(XBeeID, LastReport, dataADC[0], dataADC[1], dataADC[2], dataADC[3]) );
+    Reports.add(new EcoidReport(thisName, LastReport, dataADC[0], dataADC[1], dataADC[2], dataADC[3]) );
     
 
 
@@ -216,23 +253,14 @@ public void parseZNetFrame() {
       }
     }*/
     
-    //get XBee unique ID
-    XBeeID = "";
-    for (int i = 2; i<= 8; i++) { 
-      XBeeID = XBeeID + hex(dataArray[i],2);
-      
-    }
-    print("XBeeID = " + XBeeID);
-    println();
-
-    println("addr = " + addr);
+  
     //send report to server
     for (int j=0; j<4; j++) {
 
       //sendString = "http://www.eco-os.org/ecoidCollect.php?name=" + addr + sensorArray[j] + "&value=" + dataADC[j];
       //sendString = "http://www.eco-os.org/ecoidCollect.php?name=" + XBeeID + sensorArray[j] + "&value=" + dataADC[j];
       //println(sendString);
-      feed = new DataOut(this, COSM_API_KEY, feedID);
+      feed = new DataOut(this, COSM_API_KEY, thisFeedID);
       
       float dataVal= dataADC[j];
       
@@ -241,7 +269,7 @@ public void parseZNetFrame() {
       //UNCOMMENT BEFORE DEPLOY - This Prevents Uploads during Testing.
       //String[] s = loadStrings(sendString);
     }
-    LastReport = Calendar.getInstance().getTime().toString();
+    
     
     //Write report to file
      /*try {
