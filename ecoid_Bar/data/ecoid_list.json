@@ -2,10 +2,76 @@
 	"Ecoids" : [
 		{
 			"Name":"Ecoid Test A",
-			"XBee_ID":"13A200406F17AD",
-			"Feed_ID":"121062"
+			"XBee_ID":"13A200407C4130",
+			"Feed_ID":"121062",
+			"Type":"RT"
 			
 		}
-
+		{
+			"Name":"Ecoid A",
+			"XBee_ID":"13A200407C40FF",
+			"Feed_ID":"121285",
+			"Type":"40min"
+		}
+		{
+			"Name":"Ecoid B",
+			"XBee_ID":"",
+			"Feed_ID":"121288",
+			"Type":"40min"
+		}
+		{
+			"Name":"Ecoid C",
+			"XBee_ID":"",
+			"Feed_ID":"121289",
+			"Type":"40min"
+		}
+		{
+			"Name":"Ecoid D",
+			"XBee_ID":"",
+			"Feed_ID":"121290",
+			"Type":"40min"
+		}
+		{
+			"Name":"Ecoid E",
+			"XBee_ID":"",
+			"Feed_ID":"121291",
+			"Type":"40min"
+		}
+		{
+			"Name":"Ecoid F",
+			"XBee_ID":"",
+			"Feed_ID":"121292",
+			"Type":"40min"
+		}
+		{
+			"Name":"Ecoid G",
+			"XBee_ID":"",
+			"Feed_ID":"121293",
+			"Type":"40min"
+		}
+		{
+			"Name":"Ecoid H",
+			"XBee_ID":"",
+			"Feed_ID":"121294",
+			"Type":"40min"
+		}
+		{
+			"Name":"Ecoid I",
+			"XBee_ID":"",
+			"Feed_ID":"121295",
+			"Type":"40min"
+		}
+		{
+			"Name":"Ecoid J",
+			"XBee_ID":"",
+			"Feed_ID":"121296",
+			"Type":"40min"
+		}
+		{
+			"Name":"Ecoid K",
+			"XBee_ID":"",
+			"Feed_ID":"121297",
+			"Type":"40min"
+		}
 	]
 }
