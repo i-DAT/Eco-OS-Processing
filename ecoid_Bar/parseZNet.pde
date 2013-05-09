@@ -3,7 +3,7 @@ import java.util.*;
 
 //import cosm.*;
 
-DataOut feed;
+//DataOut feed;
 
 
 // if you get a ZNet XBeeDataFrame, pull the parts out:
@@ -232,8 +232,24 @@ public void parseZNetFrame() {
     
     fill(250);
     
-    logger.println(thisName + "/" + LastReport + "/" + dataADC[0] + "/" + dataADC[1] + "/" + dataADC[2] + "/" + dataADC[3]);
+    processing.data.XML xml = createXML("ecoid");
+    processing.data.XML sensor = xml.addChild("id");
+    sensor.setContent(thisName);
+    sensor = xml.addChild("sensor0");
+    sensor.setContent(str(dataADC[0]));
+    sensor = xml.addChild("sensor1");
+    sensor.setContent(str(dataADC[1]));
+    sensor = xml.addChild("sensor2");
+    sensor.setContent(str(dataADC[2]));
+    sensor = xml.addChild("sensor3");
+    sensor.setContent(str(dataADC[3]));
+    
+    
+    logger = createWriter("log.txt");
+    //logger.println(thisName + "/" + LastReport + "/" + dataADC[0] + "/" + dataADC[1] + "/" + dataADC[2] + "/" + dataADC[3]);
+    logger.println(xml);
     logger.flush();
+    logger.close();
     
     Reports.add(new EcoidReport(thisName, LastReport, dataADC[0], dataADC[1], dataADC[2], dataADC[3]) );
     
