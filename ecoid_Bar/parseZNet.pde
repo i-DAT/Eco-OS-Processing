@@ -232,6 +232,9 @@ public void parseZNetFrame() {
     
     fill(250);
     
+    logger.println(thisName + "/" + LastReport + "/" + dataADC[0] + "/" + dataADC[1] + "/" + dataADC[2] + "/" + dataADC[3]);
+    logger.flush();
+    
     Reports.add(new EcoidReport(thisName, LastReport, dataADC[0], dataADC[1], dataADC[2], dataADC[3]) );
     
 

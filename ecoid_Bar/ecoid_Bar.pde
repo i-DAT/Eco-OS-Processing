@@ -13,6 +13,8 @@ PFont temp;
 PFont light;
 //FileWriter writer;
 
+PrintWriter logger;
+
 PImage logo;
 
 int width = 1200;
@@ -119,6 +121,9 @@ void setup() {
   sensorArray[3] = "_stretch";
   
   Reports = new ArrayList();
+  
+  
+  logger = createWriter("log.txt");
 }
 
 void draw() {
@@ -212,3 +217,8 @@ void draw() {
   //  println("dataArray size: "+ dataArray.length);
   parseZNetFrame();
 }
+
+void stop() {
+  logger.close();
+  super.stop();
+} 
