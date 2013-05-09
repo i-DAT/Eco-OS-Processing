@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 import processing.serial.*;
-
-import org.json.JSONObject;
-import org.json.JSONArray;
+//import org.json.JSONObject;
+//import org.json.JSONArray;
 
 //proxy
 import java.net.*;
@@ -56,11 +55,10 @@ int[] ECOPACKET;
 String json_request = "data/ecoid_list.json";
 String json_result;
 
-JSONArray ecoid_list;
+//JSONArray ecoid_list;
 
 
 ArrayList Reports;
-
 
 void setup() {
   frameRate(1);
@@ -81,7 +79,7 @@ void setup() {
   json_result = join( loadStrings( json_request ), "");  
   
   //print(result);
-  JSONObject Data1 = new JSONObject(json_result);
+  /*JSONObject Data1 = new JSONObject(json_result);
   ecoid_list = Data1.getJSONArray("Ecoids");
   print(ecoid_list);
   try{
@@ -89,7 +87,7 @@ void setup() {
     print(anEcoid.getString("Name"));
   } catch (JSONException e) {
     println ("There was an error parsing the JSONObject.");
-  } 
+  } */
 
 
   // List all the available serial ports
@@ -123,7 +121,7 @@ void setup() {
   Reports = new ArrayList();
   
   
-  logger = createWriter("log.txt");
+  //logger = createWriter("log.txt");
 }
 
 void draw() {
