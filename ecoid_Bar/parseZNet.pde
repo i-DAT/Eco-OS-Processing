@@ -1,7 +1,7 @@
 //functions for processing and transmitted imformation from Packets coming from the Xbee Neyworks
 import java.util.*;
 
-import cosm.*;
+//import cosm.*;
 
 DataOut feed;
 
@@ -178,27 +178,29 @@ public void parseZNetFrame() {
     
     //Find the Ecoid
     
-    try{
+    thisName = XBeeID;
+    
+    //try{
       //JSONObject anEcoid = ecoid_list.getJSONObject(0);
       //print(anEcoid.getString("Name"));
-      thisName = "";
-      thisFeedID = "";
+   //   thisName = "";
+   //   thisFeedID = "";
       
-    for(int i = 0; i < ecoid_list.length(); i++){
-        JSONObject anEcoid = ecoid_list.getJSONObject(i);
-        if (XBeeID.equals(anEcoid.getString("XBee_ID"))){
-          println("Match! " + anEcoid.getString("Name"));
-          thisName = anEcoid.getString("Name");
-          thisFeedID = anEcoid.getString("Feed_ID");
-        }
-        else{
-          println(anEcoid.getString("Name"));
-        }
-    }
+   // for(int i = 0; i < ecoid_list.length(); i++){
+   //     JSONObject anEcoid = ecoid_list.getJSONObject(i);
+   //     if (XBeeID.equals(anEcoid.getString("XBee_ID"))){
+   //       println("Match! " + anEcoid.getString("Name"));
+   //       thisName = anEcoid.getString("Name");
+   //       thisFeedID = anEcoid.getString("Feed_ID");
+   //     }
+   //     else{
+   //       println(anEcoid.getString("Name"));
+   //     }
+   // }
   
-    } catch (JSONException e) {
-      println (e);
-    } 
+   // } catch (JSONException e) {
+   //   println (e);
+   // } 
     
 
    
@@ -260,11 +262,11 @@ public void parseZNetFrame() {
       //sendString = "http://www.eco-os.org/ecoidCollect.php?name=" + addr + sensorArray[j] + "&value=" + dataADC[j];
       //sendString = "http://www.eco-os.org/ecoidCollect.php?name=" + XBeeID + sensorArray[j] + "&value=" + dataADC[j];
       //println(sendString);
-      feed = new DataOut(this, COSM_API_KEY, thisFeedID);
+      //feed = new DataOut(this, COSM_API_KEY, thisFeedID);
       
-      float dataVal= dataADC[j];
+      //float dataVal= dataADC[j];
       
-      feed.setStream(sensorArray[j], dataVal);
+      //feed.setStream(sensorArray[j], dataVal);
       
       //UNCOMMENT BEFORE DEPLOY - This Prevents Uploads during Testing.
       //String[] s = loadStrings(sendString);
