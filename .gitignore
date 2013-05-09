@@ -6,3 +6,6 @@
 *.ear
 
 ecoid_Bar/passwords.pde
+
+ecoid_Bar/application*
+ecoid_Bar/web-export*
